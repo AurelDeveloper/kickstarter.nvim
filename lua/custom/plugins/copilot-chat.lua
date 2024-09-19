@@ -13,7 +13,7 @@ return {
     keys = {
       -- Ask a question in the chat
       {
-        "<leader>ccq",
+        "<leader>cc",
         function()
           local input = vim.fn.input("Ask Copilot: ")
           if input ~= "" then
