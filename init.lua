@@ -161,7 +161,10 @@ vim.opt.scrolloff = 10
 --  See `:help vim.keymap.set()`
 
 -- Define a shortcut for saving
-vim.keymap.set('n', '<leader>s', ':w<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
+
+-- Define a shortcut for copy the complete file
+vim.keymap.set('n', '<leader>cf', ':%y+<CR>', { noremap = true, silent = true })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -234,7 +237,7 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'nvim-java/nvim-java', -- Java development support
-  'github/copilot.vim', -- GitHub Copilot integration
+  'zbirenbaum/copilot.lua',
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -656,7 +659,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('java').setup()
-      require('lspconfig').jdtls.setup({})
+      require('lspconfig').jdtls.setup {}
 
       require('mason-lspconfig').setup {
         handlers = {
@@ -843,7 +846,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd('colorscheme github_dark_tritanopia')
+      vim.cmd 'colorscheme github_dark_tritanopia'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -931,6 +934,8 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+
+  require 'custom.plugins.avante', -- add Cusror Like in Nvim
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
