@@ -237,7 +237,8 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   'nvim-java/nvim-java', -- Java development support
-  'zbirenbaum/copilot.lua',
+  'github/copilot.vim', -- Official Copilot plugin
+  'numToStr/Comment.nvim', -- Commenting plugin
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following

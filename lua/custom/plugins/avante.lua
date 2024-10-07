@@ -6,11 +6,11 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      -- Wähle Copilot als einzigen Provider
+      -- Choose Copilot as provider
       provider = 'copilot',
-      auto_suggestions_provider = 'copilot', -- Automatische Vorschläge auch über Copilot
+      auto_suggestions_provider = 'copilot',
       behaviour = {
-        auto_suggestions = true, -- Nutze automatische Vorschläge
+        auto_suggestions = false,
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
