@@ -160,6 +160,17 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Normal mode mappings for d => "delete and leader d => "cut"
+vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>d', '""d', { noremap = true, silent = true })
+
+-- Visual mode mappings for d => "delete and leader d => "cut"
+vim.api.nvim_set_keymap('v', 'd', '"_d', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>d', '""d', { noremap = true, silent = true })
+
+-- Define a shortcut the execute the :q command
+vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })
+
 -- Define a shortcut for saving
 vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })
 
@@ -365,6 +376,50 @@ require('lazy').setup({
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
+
+    defaults = { 
+      file_ignore_patterns = { 
+        "node_modules",
+        "target",
+        "dist",
+        "build",
+        ".git",
+        ".hg",
+        ".svn",
+        ".idea",
+        ".vscode",
+        ".DS_Store",
+        ".cache",
+        ".next",
+        ".env",
+        ".terraform",
+        ".vagrant",
+        ".venv",
+        ".vscode",
+        ".yarn",
+        ".yarnrc",
+        "build",
+        "out",
+        "target",
+        "__pycache__",
+        ".pytest_cache",
+        ".mypy_cache",
+        ".tox",
+        ".venv",
+        "vendor",
+        "bin",
+        "target",
+        "build",
+        "bin",
+        "obj",
+        "vendor",
+        ".build",
+        "build",
+        "target",
+        "lua_modules",
+    },
+    },
+
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
       -- it can fuzzy find! It's more than just a "file finder", it can search
@@ -841,17 +896,17 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'projekt0n/github-nvim-theme',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd 'colorscheme github_dark_tritanopia'
+    -- 'projekt0n/github-nvim-theme',
+    -- priority = 1000, -- Make sure to load this before all the other start plugins.
+    -- init = function()
+    -- Load the colorscheme here.
+    -- Like many other themes, this one has different styles, and you could load
+    -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+    -- vim.cmd 'colorscheme github_dark_tritanopia'
 
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
+    -- You can configure highlights by doing something like:
+    -- vim.cmd.hi 'Comment gui=none'
+    -- end,
   },
 
   -- Highlight todo, notes, etc in comments
@@ -935,6 +990,8 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'custom.plugins.copilot-chat', -- adds Copilot Chat
+  require 'custom.plugins.auto-dark-mode', -- adds auto dark mode
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
